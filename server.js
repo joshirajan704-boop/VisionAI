@@ -24,7 +24,7 @@ app.post("/chat", async (req, res) => {
   "Content-Type": "application/json",
   "HTTP-Referer": "https://visionai-backend-ubhl.onrender.com",
   "X-Title": "VisionAI"
-},
+        
       },
       body: JSON.stringify({
         model: "openai/gpt-4.1-mini",
