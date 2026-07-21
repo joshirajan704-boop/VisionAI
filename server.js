@@ -64,7 +64,7 @@ app.post("/image", async (req, res) => {
     const { prompt } = req.body;
 
     const imageUrl =
-      `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}`;
+`https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=1024&height=1024&model=flux&enhance=true&nologo=true`;
 
     res.json({
       image: imageUrl
