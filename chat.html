@@ -53,7 +53,24 @@ border-radius:10px;
 <div id="result">Response will appear here...</div>
 
 <script>
-function chat(){
+<script>
+async function chat() {
+  const message = document.getElementById("prompt").value;
+
+  const res = await fetch("https://visionai-backend-ubhl.onrender.com/chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: message
+    })
+  });
+
+  const data = await res.json();
+  document.getElementById("result").innerHTML = data.reply;
+}
+</script>
 let text=document.getElementById("prompt").value;
 document.getElementById("result").innerHTML="You typed: "+text;
 }
