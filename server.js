@@ -27,14 +27,15 @@ app.post("/chat", async (req, res) => {
         
       },
       body: JSON.stringify({
-        model: "openai/gpt-4.1-mini",
-        messages: [
-          {
-            role: "user",
-            content: message
-          }
-        ]
-      })
+  model: "openrouter/free",
+  messages: [
+    {
+      role: "user",
+      content: message
+    }
+  ],
+  max_tokens: 300
+})
     });
 
     const data = await response.json();
