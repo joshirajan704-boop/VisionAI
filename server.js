@@ -20,8 +20,11 @@ app.post("/chat", async (req, res) => {
     const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        "Content-Type": "application/json"
+  "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+  "Content-Type": "application/json",
+  "HTTP-Referer": "https://visionai-backend-ubhl.onrender.com",
+  "X-Title": "VisionAI"
+},
       },
       body: JSON.stringify({
         model: "openai/gpt-4.1-mini",
@@ -35,7 +38,14 @@ app.post("/chat", async (req, res) => {
     });
 
     const data = await response.json();
+console.log("Status:", response.status);
+console.log("Data:", JSON.stringify(data, null, 2));
 
+if (!response.ok) {
+  return res.status(response.status).json({
+    reply: JSON.stringify(data)
+  });
+}
     res.json({
       reply: data.choices[0].message.content
     });
