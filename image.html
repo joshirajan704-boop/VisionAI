@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VisionAI Image Generator</title>
+
+<style>
+body{
+  font-family:Arial,sans-serif;
+  background:#111827;
+  color:white;
+  text-align:center;
+  padding:20px;
+}
+
+input{
+  width:90%;
+  max-width:400px;
+  padding:12px;
+  border-radius:8px;
+  border:none;
+}
+
+button{
+  margin-top:15px;
+  padding:12px 20px;
+  border:none;
+  border-radius:8px;
+  background:#2563eb;
+  color:white;
+  cursor:pointer;
+}
+
+img{
+  margin-top:20px;
+  max-width:100%;
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎨 VisionAI Image Generator</h1>
+
+<input id="prompt" placeholder="Enter image prompt">
+
+<br>
+
+<button onclick="generateImage()">Generate Image</button>
+
+<br>
+
+<img id="result">
+
+<script>
+async function generateImage(){
+
+const prompt=document.getElementById("prompt").value;
+
+const res=await fetch("https://visionai-backend-ubhl.onrender.com/image",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({prompt})
+});
+
+const data=await res.json();
+
+document.getElementById("result").src=data.image;
+
+}
+</script>
+
+</body>
+</html>
