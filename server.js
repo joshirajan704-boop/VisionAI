@@ -59,7 +59,23 @@ if (!response.ok) {
     });
   }
 });
+app.post("/image", async (req, res) => {
+  try {
+    const { prompt } = req.body;
 
+    const imageUrl =
+      `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}`;
+
+    res.json({
+      image: imageUrl
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "Image generation failed"
+    });
+  }
+});
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server started on port 3000");
 });
