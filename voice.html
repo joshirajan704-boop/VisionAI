@@ -72,9 +72,44 @@ color:#ddd;
 </div>
 
 <script>
-document.getElementById("startVoice").onclick=function(){
-document.getElementById("status").innerHTML=
-"🎤 Voice feature will be connected in the next step.";
+const status = document.getElementById("status");
+const button = document.getElementById("startVoice");
+
+const SpeechRecognition =
+window.SpeechRecognition ||
+window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+
+const recognition = new SpeechRecognition();
+
+recognition.lang = "en-US";
+recognition.interimResults = false;
+
+button.onclick = () => {
+recognition.start();
+status.innerHTML = "🎤 Listening...";
+};
+
+recognition.onresult = (event) => {
+
+const text = event.results[0][0].transcript;
+
+status.innerHTML = "You said: " + text;
+
+};
+
+recognition.onerror = () => {
+
+status.innerHTML = "❌ Voice recognition failed.";
+
+};
+
+} else {
+
+status.innerHTML =
+"Speech Recognition is not supported on this browser.";
+
 }
 </script>
 
