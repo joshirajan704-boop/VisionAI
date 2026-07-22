@@ -101,7 +101,29 @@ transition:.3s;
 button:hover{
 transform:scale(1.03);
 }
+.bottom-nav{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:rgba(15,23,42,.95);
+backdrop-filter:blur(15px);
+display:flex;
+justify-content:space-around;
+padding:12px 0;
+border-top:1px solid rgba(255,255,255,.1);
+}
 
+.bottom-nav a{
+color:white;
+text-decoration:none;
+font-size:14px;
+text-align:center;
+}
+
+.bottom-nav a:hover{
+color:#60a5fa;
+}
 </style>
 
 </head>
@@ -147,6 +169,20 @@ placeholder="🔍 Ask VisionAI anything...">
 ✨ Prompt Enhancer
 </button>
 
+</div>
+<div class="bottom-nav">
+  <a href="index.html">🏠<br>Home</a>
+  <a href="image.html">🎨<br>Create</a>
+  <a href="chat.html">💬<br>Chat</a>
+  <a href="#">👤<br>Profile</a>
+</div>
+</div>
+
+<div class="bottom-nav">
+  <a href="index.html">🏠<br>Home</a>
+  <a href="image.html">🎨<br>Create</a>
+  <a href="chat.html">💬<br>Chat</a>
+  <a href="profile.html">👤<br>Profile</a>
 </div>
 
 <script src="script.js"></script>
