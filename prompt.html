@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VisionAI Prompt Enhancer</title>
 
+<style>
+body{
+background:#111827;
+color:white;
+font-family:Arial;
+padding:20px;
+}
+
+textarea{
+width:100%;
+height:150px;
+padding:15px;
+border-radius:10px;
+font-size:16px;
+margin-bottom:15px;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#2563eb;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+#output{
+margin-top:20px;
+padding:15px;
+background:#1f2937;
+border-radius:10px;
+white-space:pre-wrap;
+}
+</style>
+
+</head>
+<body>
+
+<h2>✨ Prompt Enhancer</h2>
+
+<textarea id="prompt" placeholder="Write your prompt..."></textarea>
+
+<button onclick="enhancePrompt()">
+Enhance Prompt
+</button>
+
+<div id="output"></div>
+
+<script>
+async function enhancePrompt(){
+
+const prompt =
+document.getElementById("prompt").value;
+
+const res = await fetch("https://visionai-backend-ubhl.onrender.com/chat",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+message:
+"Improve this AI image/video prompt professionally: "+prompt
+})
+});
+
+const data = await res.json();
+
+document.getElementById("output").innerHTML =
+data.reply;
+
+}
+</script>
+
+</body>
+</html>
