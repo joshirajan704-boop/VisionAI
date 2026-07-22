@@ -6,6 +6,7 @@
 <title>VisionAI</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -13,9 +14,7 @@ box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
 
-
 body{
-margin:0;
 min-height:100vh;
 display:flex;
 justify-content:center;
@@ -28,28 +27,67 @@ color:white;
 width:90%;
 max-width:420px;
 padding:25px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(12px);
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
 border-radius:20px;
 box-shadow:0 10px 30px rgba(0,0,0,.35);
 text-align:center;
 }
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+font-size:24px;
+font-weight:bold;
+}
+
+.logo{
+width:90px;
+height:90px;
+margin:0 auto 20px;
+border-radius:50%;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:42px;
+box-shadow:0 10px 30px rgba(37,99,235,.4);
+}
+
 h1{
-font-size:38px;
+font-size:40px;
 margin-bottom:10px;
 }
 
 p{
 color:#d1d5db;
 font-size:16px;
-margin-bottom:30px;
-line-height:1.6;
+margin-bottom:25px;
+line-height:1.5;
+}
+
+.search{
+width:100%;
+padding:15px;
+margin-bottom:20px;
+border:none;
+border-radius:15px;
+background:rgba(255,255,255,.12);
+color:white;
+font-size:16px;
+outline:none;
+}
+
+.search::placeholder{
+color:#ddd;
 }
 
 button{
 width:100%;
 padding:16px;
-margin:12px 0;
+margin:10px 0;
 border:none;
 border-radius:14px;
 background:linear-gradient(90deg,#2563eb,#7c3aed);
@@ -67,35 +105,52 @@ transform:scale(1.03);
 </style>
 
 </head>
+
 <body>
 
 <div class="container">
 
+<div class="topbar">
+<span>☰</span>
+<span>VisionAI</span>
+<span>👤</span>
+</div>
+
 <div class="logo">🤖</div>
-.logo{
-width:90px;
-height:90px;
-margin:0 auto 20px;
-border-radius:50%;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:42px;
-box-shadow:0 10px 30px rgba(37,99,235,.4);
-}
+
 <h1>VisionAI</h1>
+
 <p>🚀 Chat • Image • Video • Voice • AI Assistant</p>
+
+<input
+type="text"
+class="search"
+placeholder="🔍 Ask VisionAI anything...">
+
+<button onclick="window.location.href='chat.html'">
+💬 AI Chat
+</button>
 
 <button onclick="window.location.href='image.html'">
 🎨 AI Image Generator
 </button>
-<button>🎬 AI Video Generator</button>
-<button onclick="window.location.href='chat.html'">💬 AI Chat</button>
-<button>✨ Prompt Enhancer</button>
-<button>🖼 Image to Video</button>
+
+<button>
+🎬 AI Video Generator
+</button>
+
+<button>
+🖼 Image to Video
+</button>
+
+<button>
+✨ Prompt Enhancer
+</button>
 
 </div>
+
 <script src="script.js"></script>
+
 </body>
 </html>
+
