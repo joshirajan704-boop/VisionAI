@@ -70,6 +70,24 @@ async function chat() {
   document.getElementById("result").innerHTML = data.reply;
 }
 </script>
+<script>
+window.onload = function () {
 
+const prompt = localStorage.getItem("vision_prompt");
+
+if(prompt){
+
+const input = document.getElementById("prompt");
+
+if(input){
+input.value = prompt;
+}chat();
+
+localStorage.removeItem("vision_prompt");
+
+}
+
+};
+</script>
 </body>
 </html>
