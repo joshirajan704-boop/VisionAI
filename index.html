@@ -170,8 +170,10 @@ font-size:16px;
 
 <input
 type="text"
+id="search"
 class="search"
-placeholder="🔍 Ask VisionAI anything...">
+placeholder="🔍 Ask VisionAI anything..."
+onkeypress="goChat(event)">
 
 <div class="grid">
 
@@ -222,7 +224,22 @@ placeholder="🔍 Ask VisionAI anything...">
   <a href="chat.html">💬<br>Chat</a>
   <a href="profile.html">👤<br>Profile</a>
 </div>
+<script>
+function goChat(e){
 
+if(e.key==="Enter"){
+
+const prompt =
+document.getElementById("search").value;
+
+localStorage.setItem("vision_prompt",prompt);
+
+window.location.href="chat.html";
+
+}
+
+}
+</script>
 <script src="script.js"></script>
 
 </body>
