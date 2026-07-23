@@ -75,7 +75,7 @@ app.post("/image", async (req, res) => {
       error: "Image generation failed"
     });
   }
-
+});
 
 app.post("/video", async (req, res) => {
   const { prompt } = req.body;
