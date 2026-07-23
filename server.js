@@ -132,9 +132,31 @@ app.post("/enhance", async (req, res) => {
 });
 
 app.post("/video", async (req, res) => {
-  res.json({
-    video: "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
-  });
+  try {
+    const { prompt } = req.body;
+
+    const result = await fal.subscribe(
+      "bytedance/seedance-2.0/fast/text-to-video",
+      {
+        input: {
+          prompt: prompt
+        },
+        logs: true
+      }
+    );
+
+    res.json({
+      video: result.data.video.url
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      error: "Video generation failed"
+    });
+  }
+});
 });
 
 const PORT = process.env.PORT || 3000;
