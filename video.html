@@ -78,7 +78,47 @@ Generate Video
 </button>
 
 <div id="videoResult"></div>
+<script>
+async function generateVideo(){
 
+const prompt = document.getElementById("videoPrompt").value;
+const result = document.getElementById("videoResult");
+
+result.innerHTML = "⏳ Generating...";
+
+try{
+
+const res = await fetch("https://visionai-backend-ubh1.onrender.com/video",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+prompt:prompt
+})
+
+});
+
+const data = await res.json();
+
+if(data.video){
+result.innerHTML =
+`<video controls width="100%" src="${data.video}"></video>`;
+}else{
+result.innerHTML = "❌ Video generation failed.";
+}
+
+}catch(e){
+
+result.innerHTML = "⚠️ Server Error";
+
+}
+
+}
+</script>
 <body>
 
 <div class="container">
