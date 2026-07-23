@@ -38,7 +38,8 @@ app.post("/chat", async (req, res) => {
     });
 
     const data = await response.json();
-
+console.log("Status:", response.status);
+console.log("Data:", JSON.stringify(data, null, 2));
     if (!response.ok) {
       return res.status(response.status).json({
         reply: JSON.stringify(data)
