@@ -56,27 +56,36 @@ Enhance Prompt
 <div id="output"></div>
 
 <script>
-async function enhancePrompt(){
+async function enhancePrompt() {
 
-const prompt =
-document.getElementById("prompt").value;
+  const prompt = document.getElementById("prompt").value;
+  const output = document.getElementById("output");
 
-const res = await fetch("https://visionai-backend-ubhl.onrender.com/chat",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body:JSON.stringify({
-message:
-"Improve this AI image/video prompt professionally: "+prompt
-})
-});
+  if (!prompt.trim()) {
+    output.innerHTML = "Please enter a prompt.";
+    return;
+  }
 
-const data = await res.json();
+  output.innerHTML = "⏳ Enhancing prompt...";
 
-document.getElementById("output").innerHTML =
-data.reply;
+  try {
+    const res = await fetch("https://visionai-backend-ubhl.onrender.com/enhance", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        prompt: prompt
+      })
+    });
 
+    const data = await res.json();
+
+    output.innerHTML = data.prompt || data.error || "Something went wrong.";
+
+  } catch (err) {
+    output.innerHTML = "❌ Unable to connect to the server.";
+  }
 }
 </script>
 
