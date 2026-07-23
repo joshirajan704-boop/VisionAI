@@ -1,7 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+const { fal } = require("@fal-ai/client");
 
+fal.config({
+  credentials: process.env.FAL_KEY
+});
 const app = express();
 
 app.use(cors());
