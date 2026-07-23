@@ -144,7 +144,7 @@ app.post("/video", async (req, res) => {
         logs: true
       }
     );
-
+console.log(JSON.stringify(result, null, 2));
     res.json({
       video: result.data.video.url
     });
