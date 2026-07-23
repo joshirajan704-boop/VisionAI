@@ -75,21 +75,19 @@ app.post("/image", async (req, res) => {
       error: "Image generation failed"
     });
   }
-});app.post("/chat", ...);
 
-app.post("/image", ...);
 
-app.post("/video", ...);
+app.post("/video", async (req, res) => {
+  const { prompt } = req.body;
+
+  res.json({
+    video: "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+  });
+});
+
 
 
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server started on port 3000");
 });
-app.post("/video", async (req, res) => {
-  const { prompt } = req.body;
 
-  // अभी के लिए Demo Response
-  res.json({
-    video: "https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
-  });
-});
