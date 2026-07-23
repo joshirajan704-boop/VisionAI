@@ -75,7 +75,13 @@ app.post("/image", async (req, res) => {
       error: "Image generation failed"
     });
   }
-});
+});app.post("/chat", ...);
+
+app.post("/image", ...);
+
+app.post("/video", ...);
+
+
 app.listen(process.env.PORT || 3000, () => {
   console.log("Server started on port 3000");
 });
